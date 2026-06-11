@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Soengkem - Warisan Rasa Nusantara</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/landing.css">
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, doc, setDoc, getDocs, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      // TODO: GANTI DENGAN API KEY FIREBASE ANDA
+      apiKey: "AIzaSyAURk8Q9mfDWnmY6Jy3c8KwQkqYjgx9Ns4",
+      authDomain: "syncro-os.firebaseapp.com",
+      projectId: "syncro-os",
+      storageBucket: "syncro-os.firebasestorage.app",
+      messagingSenderId: "968033119456",
+      appId: "1:968033119456:web:c5fa44d174063160b53485",
+      measurementId: "G-70MKY5497X"
+    };
+
+    window.firebaseApp = initializeApp(firebaseConfig);
+    window.db = getFirestore(window.firebaseApp);
+    window.fbCollection = collection;
+    window.fbOnSnapshot = onSnapshot;
+    window.fbDoc = doc;
+    window.fbSetDoc = setDoc;
+    window.fbWriteBatch = writeBatch;
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="https://ui-avatars.com/api/?name=SS&background=0F6A4A&color=fff&rounded=true" alt="Logo">
+      Sri Soengkem
+    </div>
+    <div class="nav-links">
+      <a href="#beranda">Beranda</a>
+      <a href="#filosofi">Filosofi</a>
+      <a href="#menu">Menu</a>
+      <a href="#cara-pesan">Cara Pesan</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Pesan
+        Sekarang</button>
+    </div>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="beranda">
+    <div class="hero-content">
+      <div class="badge">Warisan Rasa Nusantara</div>
+      <h1>Lebih dari Sekadar Hidangan</h1>
+      <p>Menghadirkan kehangatan, penghormatan, dan cita rasa Nusantara dalam setiap sajian.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Pesan
+          Sekarang</button>
+        <button class="btn-secondary"
+          onclick="document.getElementById('filosofi').scrollIntoView({behavior: 'smooth'})">Tentang Kami</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Sajian Nusantara">
+    </div>
+  </section>
+
+  <!-- FILOSOFI -->
+  <section class="filosofi" id="filosofi">
+    <div class="section-title">
+      <h2>Filosofi Sri Soengkem</h2>
+      <p>Nilai-nilai luhur yang kami pegang dalam setiap hidangan</p>
+    </div>
+    <div class="filosofi-grid">
+      <div class="filosofi-card">
+        <div class="filosofi-icon"><i class="fas fa-hands-praying"></i></div>
+        <h3>Penghormatan</h3>
+        <p>Setiap sajian dibuat dengan penuh rasa hormat terhadap resep leluhur dan bahan-bahan pilihan alam Nusantara.
+        </p>
+      </div>
+      <div class="filosofi-card">
+        <div class="filosofi-icon"><i class="fas fa-sun"></i></div>
+        <h3>Kehangatan</h3>
+        <p>Hadir untuk menghangatkan setiap momen kebersamaan Anda bersama keluarga dan orang-orang tercinta.</p>
+      </div>
+      <div class="filosofi-card">
+        <div class="filosofi-icon"><i class="fas fa-mortar-pestle"></i></div>
+        <h3>Warisan Rasa</h3>
+        <p>Menjaga keaslian cita rasa rempah Nusantara yang kaya, otentik, dan tak lekang oleh waktu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KENAPA MEMILIH KAMI -->
+  <section class="why-us">
+    <div class="why-image">
+      <img
+        src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        alt="Bahan Segar">
+    </div>
+    <div>
+      <div class="section-title">
+        <h2>Kenapa Memilih Kami?</h2>
+        <p>Kualitas dan keaslian adalah janji kami kepada Anda.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-leaf"></i></div>
+          <div class="why-text">
+            <h4>Dibungkus Daun Pisang</h4>
+            <p>Aroma alami yang menggugah selera.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-book-open"></i></div>
+          <div class="why-text">
+            <h4>Resep Warisan</h4>
+            <p>Otentik dari generasi ke generasi.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-star"></i></div>
+          <div class="why-text">
+            <h4>Bahan Berkualitas</h4>
+            <p>Rempah pilihan terbaik Nusantara.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-clock"></i></div>
+          <div class="why-text">
+            <h4>Dibuat Fresh</h4>
+            <p>Disajikan hangat setiap hari.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="section-title">
+      <h2>Sajian Istimewa</h2>
+      <p>Pilih hidangan favorit Anda dari menu otentik kami</p>
+    </div>
+    <div class="menu-grid" id="menu-container">
+      <!-- DYNAMIC MENU ITEMS HERE -->
+      <div style="text-align:center; grid-column: 1 / -1; padding: 40px;">
+        <i class="fas fa-spinner fa-spin fa-2x" style="color:var(--emerald)"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA PESAN -->
+  <section class="how-to" id="cara-pesan">
+    <div class="section-title">
+      <h2>Cara Pesan</h2>
+      <p>Mudah, cepat, dan praktis</p>
+    </div>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4>Pilih Menu</h4>
+        <p>Pilih hidangan favorit Anda</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4>Isi Data</h4>
+        <p>Lengkapi alamat pengiriman</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4>Bayar</h4>
+        <p>Selesaikan pembayaran</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h4>Kami Proses</h4>
+        <p>Pesanan segar segera diantar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Sri Soengkem</h3>
+        <p>Warisan Rasa Nusantara. Menghadirkan kehangatan dan penghormatan dalam setiap sajian.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Menu Utama</h4>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#filosofi">Filosofi</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#cara-pesan">Cara Pesan</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kontak Kami</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px"></i> Jl. Nusantara No. 1,
+            Jakarta</li>
+          <li><i class="fas fa-phone" style="color:var(--gold);margin-right:8px"></i> +62 812-3456-7890</li>
+          <li><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i> hello@srisoengkem.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Sri Soengkem. All rights reserved. Built with modern web architecture.
+    </div>
+  </footer>
+
+  <!-- CART / CHECKOUT MODAL (Simplified for this file, Logic in main.js) -->
+  <div class="cart-bubble" id="cart-bubble" style="display: none;">
+    <i class="fas fa-shopping-bag"></i>
+    <div class="cart-count" id="cart-count">0</div>
+  </div>
+
+  <script src="./js/landing.js"></script>
+</body>
+
+</html>
