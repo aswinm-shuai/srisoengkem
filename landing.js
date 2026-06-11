@@ -179,6 +179,7 @@ function initLandingPage() {
     const custName = prompt("Masukkan Nama Anda:") || "Pelanggan Online";
     let waNumber = prompt("Masukkan Nomor WhatsApp Anda (contoh: 0812...):") || "";
     const address = prompt("Masukkan Alamat Pengiriman:") || "";
+    const mapsLink = prompt("Masukkan Share Lokasi (Google Maps) (Opsional):") || "";
     
     if(!waNumber) {
       alert("Pesanan dibatalkan: Nomor WhatsApp wajib diisi.");
@@ -197,7 +198,9 @@ function initLandingPage() {
     });
     
     text += `\n*Total: ${formatRupiah(total)}*`;
-    text += `\nNama: ${custName}\nAlamat: ${address}\n\nMohon diproses. Terima kasih.`;
+    text += `\nNama: ${custName}\nAlamat: ${address}\n`;
+    if (mapsLink) text += `Maps: ${mapsLink}\n`;
+    text += `\nMohon diproses. Terima kasih.`;
 
     try {
       // 1. Write Order to Firestore
@@ -208,6 +211,7 @@ function initLandingPage() {
         customerName: custName,
         wa: waNumber,
         address: address,
+        mapsLink: mapsLink,
         items: itemsForDB,
         total: total,
         payment: 'transfer',
